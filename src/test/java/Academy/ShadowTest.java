@@ -39,6 +39,8 @@ import resources.base;
 import org.openqa.selenium.JavascriptExecutor;
 import resources.base;
 import org.testng.Reporter;
+import java.util.concurrent.TimeUnit;
+
 
 
 
@@ -160,12 +162,8 @@ js.executeScript("window.scrollBy(0,500)");
 			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[4]/div")).click();
 			assertEquals("Sensie is everyone's million dollar coach - available whenever, wherever.", driver.findElement(By.xpath("//div[@id='hm']/div/div[3]/div[2]/p/div")).getText());
 			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[3]/div")).click();
-			driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/science/#scc");
-
-			assertEquals("Muscle tension is a relax reaction to stress.", driver.findElement(By.xpath("//div[@id='thescience']/div[2]/div/div/div[3]/div/p/div")).getText());
-			System.out.println("Validation text is OK");
-			assertEquals("The brain is the linking part that receives those signals from the body to regulate and coordinate movement.", driver.findElement(By.xpath("//div[@id='thescience']/div[2]/div[2]/div/div[2]/div/div/p")).getText());
-			System.out.println("Validation text is OK");
+			driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 			driver.findElement(By.xpath("//input[@value='']")).click();
 			driver.findElement(By.xpath("//input[@value='']")).clear();
@@ -175,21 +173,24 @@ js.executeScript("window.scrollBy(0,500)");
 			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[2]/div")).click();
 			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a/div")).click();
 			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[3]/div/div[2]/button/span")).click();
-			assertEquals("SIGN UP Have not link, this will fail for screenshot", driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[3]/div/div[2]/button/span")).getText());
 			
 		
 		}
 		@Test
 		public void BreackPoints() throws IOException {
 		  driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+		  pause(2000);
 
 		  JavascriptExecutor js = (JavascriptExecutor) driver;
       // set size with window.resizeTo() method
 	  js.executeScript("window.resizeTo(850,630);");
+	  pause(2000);
 
       // set size with window.resizeTo() method
 	  js.executeScript("window.resizeTo(450,630);");
+	  pause(2000);
 
 		}
 	
 }
+
