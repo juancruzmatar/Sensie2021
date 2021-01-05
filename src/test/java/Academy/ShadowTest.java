@@ -177,16 +177,20 @@ js.executeScript("window.scrollBy(0,500)");
 		
 		}
 		@Test
-		public void BreackPoints() throws IOException {
+		public void aBreackPoints() throws IOException {
 		  driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
 		  pause(2000);
 
 		  JavascriptExecutor js = (JavascriptExecutor) driver;
-      // set size with window.resizeTo() method
-	  js.executeScript("window.resizeTo(850,630);");
+	  // set size with window.resizeTo() method
+	  driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+
+	  js.executeScript("window.resizeTo(350,630);");
 	  pause(2000);
 
-      // set size with window.resizeTo() method
+	  // set size with window.resizeTo() method
+	  driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+
 	  js.executeScript("window.resizeTo(450,630);");
 	  pause(2000);
 
