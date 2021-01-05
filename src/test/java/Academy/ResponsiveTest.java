@@ -22,7 +22,7 @@ import pageObjects.LoginPage;
 import pageObjects.Methods;
 import resources.base;
 
-public class Biology13 extends base{
+public class ResponsiveTest extends base{
 	public WebDriver driver;
 	  JavascriptExecutor js;
 

@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -32,7 +33,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
-import java.lang.*;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebDriverException;
 
 public class base {
 
@@ -56,7 +63,7 @@ if(browserName.equals("chrome"))
 {
     System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
 	driver= new ChromeDriver();
-	driver.manage().window().setSize(new Dimension(730,650));
+	driver.manage().window().setSize(new Dimension(1200,750));
 
 
 		//execute in chrome driver
@@ -389,12 +396,105 @@ public void resizeBrowser() {
 	  }
 			  
 		  /////////ASSERTIONS METHODS//////////////
-		  
+	public  void waitBy(By by) {
+	    WebDriverWait wait = new WebDriverWait(driver, 60);
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+	}
 		  
 		  public void visit(String url) {
 			  driver.get(url);
 }
-		  
+		
+		  public class Element implements WebElement {
 
+				public <X> X getScreenshotAs(OutputType<X> arg0) throws WebDriverException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public void clear() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void click() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public WebElement findElement(By arg0) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public List<WebElement> findElements(By arg0) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public String getAttribute(String arg0) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public String getCssValue(String arg0) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public Point getLocation() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public Rectangle getRect() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public Dimension getSize() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public String getTagName() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public String getText() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				public boolean isDisplayed() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+
+				public boolean isEnabled() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+
+				public boolean isSelected() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+
+				public void sendKeys(CharSequence... arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void submit() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				
+				
+				
+			}
 }
 

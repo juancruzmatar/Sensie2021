@@ -311,10 +311,14 @@ public String getScreenShotPath(String testCaseName,WebDriver driver) throws IOE
 		  JavascriptExecutor executor = (JavascriptExecutor)driver;
 		  executor.executeScript("arguments[0].click();", element);
 			  
-		  
+	}
+		  public  void waitBy(By locator) {
+			WebDriverWait wait = new WebDriverWait(driver, 60);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		}
 		  
 		  //Visit URL Method
-		  }
+		  
 		  public void visit(String url) {
 			  driver.get(url);
 }

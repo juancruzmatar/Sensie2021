@@ -10,8 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -22,7 +20,7 @@ import pageObjects.AllMethods;
 import pageObjects.Methods;
 import resources.base;
 
-public class fullscreentest extends base{
+public class VisualScreens extends base{
 	  JavascriptExecutor js;
 
 
@@ -166,18 +164,10 @@ public class fullscreentest extends base{
 	By nicrosbench2=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[5]/div[2]/div[2]/div/div[2]");
  
  //////Full Breakpoint
- 	By beaker=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[1]/div[7]/div/div[1]/div[3]/div[2]/div[2]/div/div/div");
+ 	By beaker=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[3]/div[2]/div[2]");
 	By burnerbench2=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[4]/div[2]/div[2]/div[1]");
 	By nicrosafter=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[5]/div[2]/div[2]/div/div[1]");
 	By cancelbutton=By.xpath("/html/body/div[2]/div[3]/div/div/div/section[2]/button[1]");
-    By benchfull=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div");
-    By beaker2=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[1]/div[7]/div/div[1]/div[6]/div[2]/div[2]/div");
-    By cristallfull=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[1]/div[3]/div/div[1]/div[8]/div[2]");
-    By beakerbenchfull=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[2]/div[2]/div[2]");
-    By imputamount=By.xpath("/html/body/div[2]/div[3]/div/div/div/section[1]/div[2]/div[2]/div[1]/input");
-    By addbutton=By.xpath("/html/body/div[2]/div[3]/div/div/div/section[2]/button[2]");
-    By ethanol=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[1]/div[3]/div/div[1]/div[8]");
-    By containerbench=By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/div/div[2]/div[2]/div[2]/div/div/div");
 
 
 	 public static Logger log =LogManager.getLogger(base.class.getName());
@@ -210,35 +200,319 @@ public class fullscreentest extends base{
 		click(opcion3);
 		click(skipanimation);
 
-
-        Actions act=new Actions(driver);
-        pause(5000);
-        WebElement src= driver.findElement(beaker);
-        WebElement dest= driver.findElement(benchfull);
-        act.clickAndHold(src)
-        .moveToElement(dest)
-        .release()
-        .build()
-        .perform();
-
-
-
-        
 		
+		//Experiments
+		click(Instruments);
+		click(stainingpan);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Instruments);
+		click(microscope);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Containers);
+		click(aureus);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Instruments);
+		click(bunsenburner);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Containers);
+		click(nichromewirerod);
+		click(add);
+		click(tirarbench);
+		click(add);
+
+		//Material 1
+		click(burner1);
+		click(burner1);
+
+
+		Drag(nicrobench);
+		Move(burnerbench);
+		Drop(burnerbench);
+
+
 		
+																
+					
+		log.info("Biology Lab 6 1.0.2");
+		System.out.println("Smoke Test completed - V.1.0.2 BL6");
+}
+	
+@Test
+//Cambie a CL12 para validacion de materiales contenedores e instrumentos.
+	public void BL6Validate() throws IOException
+	{
+	//URL
+		visit("https://savi-cdn-dev.saplinglearning.com/hmlabsims/bl6/bl6-1.0.2/index.html");
+		//Enter Laboratory
+		click(enterlab);
+		click(opcion1);
+		click(opcion2);
+		click(opcion3);
+		click(skipanimation);
+		//Experiments
+	    driver.findElement(By.xpath("(//button[@type='button'])[7]")).click();
+	    System.out.println("**********************BIOLOGY 6*********************************************");  
 
-        
-       
+	    String materiales = driver.findElement(By.xpath("//div[@id='savi-hmlabsims-modal']/div[3]/div/div/div/section")).getText();
+	    assertEquals(materiales, driver.findElement(By.xpath("//div[@id='savi-hmlabsims-modal']/div[3]/div/div/div/section")).getText());
+	    System.out.println("Lab BL6 Materials: " +materiales);
+		System.out.println("*******************************************************************");  
+
+		click(cancelbutton);
+		
+		driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/ul/li[2]/div/button")).click();
+		System.out.println("**********************BIOLOGY 6 - Containers*********************************************");  
+
+		String containers = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/section[1]/div[1]/div")).getText();
+	    assertEquals(containers, driver.findElement(By.xpath("//div[@id='savi-hmlabsims-modal']/div[3]/div/div/div/section")).getText());
+	    System.out.println("Lab BL6 Containers: " +containers);
+		System.out.println("*******************************************************************");  
+		
+		click(cancelbutton);
+		
+		driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[3]/div[3]/div[3]/div[1]/div/div[2]/div[1]/div/div/ul/li[3]/div/button")).click();
+		System.out.println("**********************BIOLOGY 6 - Instruments*********************************************");  
+
+		String Instruments = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/section[1]/div[1]/div")).getText();
+	    assertEquals(Instruments, driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/section[1]/div[1]/div")).getText());
+	    System.out.println("Lab BL6 Instruments: " +Instruments);
+	    System.out.println("*******************************************************************");  
+	}
+
+	@Test
+	public void BL6StainingTest2() throws IOException
+	{
+	
+		//URL
+		visit("https://savi-cdn-dev.saplinglearning.com/hmlabsims/bl6/bl6-1.0.2/index.html");
+		//Enter Laboratory
+		click(enterlab);
+		click(opcion1);
+		click(opcion2);
+		click(opcion3);
+		click(skipanimation);
+		//Experiments
+		click(Instruments);
+		click(stainingpan);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Containers);
+		click(microscopeslide);
+		click(add);
+		click(modal2);
+		click(add);
+		click(Containers);
+		click(aureus);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Instruments);
+		click(bunsenburner);
+		click(add);
+		click(tirarbench);
+		click(add);
+		click(Containers);
+		click(nichromewirerod);
+		click(add);
+		click(tirarbench);
+		click(add);
+
+		// Burner Burn
+		click(burner1);
+		click(burner1);
+
+		Drag(nicrosbench2);
+		Move(burnerbench2);
+		Drop(burnerbench2);
+
+			//Experiments
+			click(Containers);
+			retryingFindClick(beaker250ml);
+			click(add);
+			click(tirarbench);
+			click(add);
+			
+			click(Containers);
+			retryingFindClick(beaker250ml);
+			click(add);
+			click(tirarbench);
+			click(add);
+			
+			click(Containers);
+			retryingFindClick(beaker250ml);
+			click(add);
+			click(tirarbench);
+			click(add);
+			
+		
+			
+			//Material 1
+			click(Materiales);
+			retryingFindClick(brilliantgreen);
+			click(buttonamount);
+			click(modal5);
+			type ("3000", enteramount);
+			click(add);
+			
+			
+			//Material 1
+					click(Materiales);
+					retryingFindClick(congored);
+					click(buttonamount);
+					click(modal2);
+					type ("5000", enteramount);
+					click(add);
+			
+					//Material 1
+					click(Materiales);
+					retryingFindClick(water);
+					click(buttonamount);
+					click(modal6);
+					type ("60", enteramount);
+					click(add);
+
+					// Burner Burn
+			click(burner1);
+			click(burner1);
+
+			Drag(beakerbench);
+			Move(burnerbench2);
+			Drop(burnerbench2);
+
+			pause(1000);
+					
+
+	//	Drag(nicrosbench2);
+	//	Moveforce(auresbench);
+	//	Dropforce(auresbench);
+
+	//	Drag(nicrosbench2);
+	//	Move(slidebench);
+	//	Drop(slidebench);
+
+	log.info("Biology Lab 6 1.0.2");
+	System.out.println("Test completed - V.1.0.2 BL6");
+}
+
+@Test
+public void BL6ZunsenBurn() throws IOException
+{
+
+	//URL
+	visit("https://savi-cdn-dev.saplinglearning.com/hmlabsims/bl6/bl6-1.0.2/index.html");
+	//Enter Laboratory
+	click(enterlab);
+	click(opcion1);
+	click(opcion2);
+	click(opcion3);
+	click(skipanimation);
+	//Experiments
+	click(Instruments);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
+	click(Containers);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
+
+	// Burner Burn
+	retryingFindClick(burner1);
+	retryingFindClick(burner1);
+	retryingFindClick(burner1);
+
+	click(Containers);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
 
 
-        
+	pause(10000);
+				
 
+//	Drag(nicrosbench2);
+//	Moveforce(auresbench);
+//	Dropforce(auresbench);
+
+//	Drag(nicrosbench2);
+//	Move(slidebench);
+//	Drop(slidebench);
+
+log.info("Biology Lab 6 1.0.2");
+System.out.println("Test completed - V.1.0.2 BL6");
+}
+		   
+
+
+@Test
+public void Aaresize() throws IOException
+{
+
+	//URL
+	visit("https://savi-cdn-dev.saplinglearning.com/hmlabsims/bl6/bl6-1.0.2/index.html");
+    resizeBrowser();
+	//Enter Laboratory
+	click(enterlab);
+	click(opcion1);
+	click(opcion2);
+	click(opcion3);
+	click(skipanimation);
+	//Experiments
+	click(Instruments);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
+	click(Containers);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
+
+	// Burner Burn
+	retryingFindClick(burner1);
+	retryingFindClick(burner1);
+	retryingFindClick(burner1);
+
+	click(Containers);
+	click(bunsenburner);
+	click(add);
+	click(tirarbench);
+	click(add);
+
+
+	pause(10000);
+				
+
+//	Drag(nicrosbench2);
+//	Moveforce(auresbench);
+//	Dropforce(auresbench);
+
+//	Drag(nicrosbench2);
+//	Move(slidebench);
+//	Drop(slidebench);
 
 log.info("Biology Lab 6 1.0.2");
 System.out.println("Test completed - V.1.0.2 BL6");
 }
 @AfterTest
 public void teardown()
+
+
+
+
 {
 	
 	//driver.close();
