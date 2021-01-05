@@ -26,7 +26,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -39,6 +38,8 @@ import pageObjects.Methods;
 import resources.base;
 import org.openqa.selenium.JavascriptExecutor;
 import resources.base;
+import org.testng.Reporter;
+
 
 
 public class ShadowTest extends base{
@@ -60,7 +61,7 @@ public class ShadowTest extends base{
 
 	@BeforeTest
 
-	  public void initialize() throws Exception {
+	  public void initialize() throws IOException {
 		  
 	  driver =initializeDriver();
 			   log.info("Driver is initialized");
@@ -75,7 +76,7 @@ public class ShadowTest extends base{
     
 	
 	@Test
-	void ASensieLogJSInjection() {
+	void ASensieLogJSInjection() throws IOException {
 		WebElement element = shadow.findElement("#username");
 		WebElement password = shadow.findElement("#password");
 		WebElement enviar = shadow.findElement("button");
@@ -92,14 +93,14 @@ public class ShadowTest extends base{
 		System.out.println(enviar);
 
 
-		//Assertions.assertEquals(new String(""), shadow.driver.getPageSource(), "Message");
+
 	}
 	
 
 	
 	
 	@Test
-	  public void web() throws Exception {
+	  public void web() throws IOException {
 
 			driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
 			
@@ -148,6 +149,47 @@ js.executeScript("window.scrollBy(0,500)");
 			log.info("version web");
 
 		  }
-	
+
+		  @Test
+		  public void ValidateNavigation() throws IOException {
+			driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div/div/a/div/img")).click();
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[5]/div")).click();
+			assertEquals("Technology of all kinds can help us along the way, but our vision is one in which we advance our ability to adapt, effectively cope with stress and govern our own internal states. The future for well-being is tool-based and supported by helping us see what was previously unseen. Unlimited possibilities await.", driver.findElement(By.xpath("//div[@id='abs']/div/div[2]/div[4]/div[2]/div/div[2]/div/div/p")).getText());
+			assertEquals("Recent breakthroughs in the fields of neuroscience and physiology have unlocked the mind/body connection. By applying sensing technology, we aim to empower humanity to take their health into their own hands.", driver.findElement(By.xpath("//div[@id='abs']/div/div[2]/div[4]/div[4]/div/div[2]/div/div/p")).getText());
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[4]/div")).click();
+			assertEquals("Sensie is everyone's million dollar coach - available whenever, wherever.", driver.findElement(By.xpath("//div[@id='hm']/div/div[3]/div[2]/p/div")).getText());
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[3]/div")).click();
+			driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/science/#scc");
+
+			assertEquals("Muscle tension is a relax reaction to stress.", driver.findElement(By.xpath("//div[@id='thescience']/div[2]/div/div/div[3]/div/p/div")).getText());
+			System.out.println("Validation text is OK");
+			assertEquals("The brain is the linking part that receives those signals from the body to regulate and coordinate movement.", driver.findElement(By.xpath("//div[@id='thescience']/div[2]/div[2]/div/div[2]/div/div/p")).getText());
+			System.out.println("Validation text is OK");
+
+			driver.findElement(By.xpath("//input[@value='']")).click();
+			driver.findElement(By.xpath("//input[@value='']")).clear();
+			driver.findElement(By.xpath("//input[@value='']")).sendKeys("juancruz.matar@gmail.com");
+			driver.findElement(By.xpath("//div[@id='app']/div/div[2]/div/div[2]/div[2]/div[2]/button/span")).click();
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[2]/div")).click();
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a[2]/div")).click();
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[2]/a/div")).click();
+			driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[3]/div/div[2]/button/span")).click();
+			assertEquals("SIGN UP Have not link, this will fail for screenshot", driver.findElement(By.xpath("//div[@id='app']/div/header/div/div/div[3]/div/div[2]/button/span")).getText());
+			
+		
+		}
+		@Test
+		public void BreackPoints() throws IOException {
+		  driver.get("https://dev.d1wojw5nslzwz.amplifyapp.com/home");
+
+		  JavascriptExecutor js = (JavascriptExecutor) driver;
+      // set size with window.resizeTo() method
+	  js.executeScript("window.resizeTo(850,630);");
+
+      // set size with window.resizeTo() method
+	  js.executeScript("window.resizeTo(450,630);");
+
+		}
 	
 }
